@@ -1,6 +1,6 @@
 .env
 .venv/
-data/mlflow/
+data/mlflow/mlflow.log
 *.db
 
 __pycache__/
