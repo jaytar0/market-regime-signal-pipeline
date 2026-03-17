@@ -4,6 +4,8 @@ from alpaca.data.timeframe import TimeFrame
 from datetime import datetime
 import os
 from dotenv import load_dotenv
+import polars as pl
+from sqlalchemy import create_engine, text
 
 load_dotenv()
 
@@ -12,16 +14,43 @@ client = StockHistoricalDataClient(
     secret_key=os.getenv("ALPACA_SECRET_KEY")
 )
 
-request = StockBarsRequest(
-    symbol_or_symbols=["SPY", "QQQ"],
-    timeframe=TimeFrame.Day,
-    start=datetime(2020, 1, 1),
-    end=datetime(2024, 1, 1)
-)
+def request_history(client):
+    request = StockBarsRequest(
+        symbol_or_symbols=["AMZN", "XLK"],
+        timeframe=TimeFrame.Day,
+        start=datetime(2019, 1, 1),
+        end=datetime(2026, 1, 1)
+    )
 
-bars = client.get_stock_bars(request)
-df = bars.df
+    bars = client.get_stock_bars(request)
+    df = bars.df.reset_index()
+    df = pl.from_pandas(df)
+    print(df.columns)
+    print(df)
 
-print(df.head(20))
-print(f"\nShape: {df.shape}")
-print(f"\nSymbols: {df.index.get_level_values('symbol').unique().tolist()}")
+    # connect and commit
+    query = ""
+
+def request_current(client):
+
+    request = StockBarsRequest(
+        symbol_or_symbols=["AMZN", "XLK"],
+        timeframe=TimeFrame.Day,
+        start=datetime(2019, 1, 1),
+        end=datetime(2026, 1, 1)
+    )
+
+    bars = client.get_stock_bars(request)
+
+    # connect and commit
+
+def active_db(client):
+
+    # connect and check status
+    NotImplemented
+
+
+if not active_db:
+    request_history(client)
+else:
+    request_current(client)
