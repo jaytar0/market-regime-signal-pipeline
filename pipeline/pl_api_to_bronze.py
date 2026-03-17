@@ -19,7 +19,8 @@ def request_history(client):
         symbol_or_symbols=["AMZN", "XLK"],
         timeframe=TimeFrame.Day,
         start=datetime(2019, 1, 1),
-        end=datetime(2026, 1, 1)
+        end=datetime(2026, 1, 1),
+        adjustments="all"
     )
 
     bars = client.get_stock_bars(request)
@@ -37,7 +38,8 @@ def request_current(client):
         symbol_or_symbols=["AMZN", "XLK"],
         timeframe=TimeFrame.Day,
         start=datetime(2019, 1, 1),
-        end=datetime(2026, 1, 1)
+        end=datetime(2026, 1, 1),
+        adjustments="all"
     )
 
     bars = client.get_stock_bars(request)
@@ -49,8 +51,23 @@ def active_db(client):
     # connect and check status
     NotImplemented
 
+def table_log(client):
 
-if not active_db:
-    request_history(client)
+    # function that logs a new entry to the run logs table for observability
+    NotImplemented
+
+if not active_db(client):
+    result_df = request_history(client)
 else:
-    request_current(client)
+    result_df = request_current(client)
+
+# step down here to add metadata
+# add ingested_at, updated_at, source, adjustment
+
+# make sure all data is in thereOHLCV + vwap + trade_count 
+
+
+# execute query
+
+# write to table logs
+
