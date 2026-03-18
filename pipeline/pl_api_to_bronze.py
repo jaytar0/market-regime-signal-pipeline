@@ -10,11 +10,16 @@ from sqlalchemy import create_engine, text
 load_dotenv()
 
 client = StockHistoricalDataClient(
-    api_key=os.getenv("ALPACA_API_KEY"),
-    secret_key=os.getenv("ALPACA_SECRET_KEY")
+    api_key = os.getenv("ALPACA_API_KEY"),
+    secret_key = os.getenv("ALPACA_SECRET_KEY")
 )
 
-def request_history(client):
+def get_engine():
+    password = os.getenv("POSTGRES_PASSWORD")
+    return create_engine(f"postgresql+psycopg2://postgres:{password}@localhost:5432/trading_db")
+
+def request_history(start_date: datetime, end_Date: datetime):
+    
     request = StockBarsRequest(
         symbol_or_symbols=["AMZN", "XLK"],
         timeframe=TimeFrame.Day,
@@ -24,10 +29,10 @@ def request_history(client):
     )
 
     bars = client.get_stock_bars(request)
-    df = bars.df.reset_index()
-    df = pl.from_pandas(df)
-    print(df.columns)
-    print(df)
+    return pl.from_pandas(bars.df.reset_index())
+
+    
+
 
     # connect and commit
     query = ""
