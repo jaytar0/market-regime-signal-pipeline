@@ -1,17 +1,33 @@
 from alpaca.data.historical import StockHistoricalDataClient
 from alpaca.data.requests import StockBarsRequest
 from alpaca.data.timeframe import TimeFrame
+
 from datetime import datetime, timedelta, timezone
-import os
 from dotenv import load_dotenv
 import polars as pl
-from sqlalchemy import create_engine, text
 import psycopg2
+import os
+import logging
 
 # load global variables
 load_dotenv()
 DB_URL =  f"postgresql://{os.getenv('POSTGRES_USER')}:{os.getenv('POSTGRES_PASSWORD')}@localhost:5432/{os.getenv('POSTGRES_DB')}"
 TICKERS = os.getenv("STOCK_LIST").split(",")
+
+# Load Logger
+os.makedirs("./pipeline/logs", exist_ok=True)
+
+# setting up logging config
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s %(levelname)s %(message)s",
+        handlers=[
+        logging.FileHandler("./pipeline/logs/api_to_bronze.log"),
+        logging.StreamHandler()
+    ]
+)
+
+log = logging.getLogger(__name__)
 
 # ensures schema is correct and tells us whether or not out table is empty
 def startup():
@@ -59,44 +75,67 @@ def request_current():
     )["max"][0]
 
     start = last_ts + timedelta(days=1)
-    end = datetime.now(timezone.utc)
+    end = datetime.now(timezone.utc) - timedelta(minutes=15)
 
     today = datetime.now(timezone.utc).date()
     
     # check just in case it is ran twice in the same day
     if last_ts.date() >= today:
-        print("Already up to date, skipping.")
+        log.warning("Already up to date, skipping.")
         return None
 
     if start >= end:
-        print("No new data is available.")
+        log.warning("No new data is available.")
         return None
     
+    log.info(f"Pulling data in range of {start} - {end}.")
     return request_stocks(start, end, stock_list)
 
 
-# function that logs a new entry to the run logs table for observability
-def table_log(client):
-
-    NotImplemented
-
-
+# main process
 if __name__ == "__main__":
 
-    stock_list = TICKERS
-    # if schema does not exist or table has no data request history, otherwise append most recent
-    if not startup():
-        result_df = request_stocks(datetime(2019, 1, 1), datetime(2026, 1, 1), stock_list)
-    else:
-        result_df = request_current()
-    
-    if result_df is not None:
+    # try running through entire process
+    try:
 
-        result_df.write_database(
-            table_name="bronze.hw5",
-            connection=DB_URL,
-            if_table_exists="append"
-        )
+        log.info("Starting Alpaca API -> Bronze pipeline")
+        stock_list = TICKERS
+        log.info(f"Tickers Pulled: {TICKERS}")
+
+        # if schema does not exist or table has no data request history, otherwise append most recent
+        if not startup():
+            log.info(f"Historical data not detected, creating bronze schema and performing initial pull.")
+            log.info(f"Bulk Time Range: {datetime(2019, 1, 1)} - {datetime(2026, 1, 1)}")
+            result_df = request_stocks(datetime(2019, 1, 1), datetime(2026, 1, 1), stock_list)
+        else:
+            log.info(f"Historical data detected, looking for new data.")
+            result_df = request_current()
+        
+
+        # if the result isnt none appending to the database with metadata
+        if result_df is not None:
+            log.info(f"New entries detected {len(result_df)}, appending to database.")
+
+            result_df = result_df.with_columns([
+                pl.lit(datetime.now(timezone.utc)).alias("ingested_at"),
+                pl.lit("alpaca").alias("source"),
+            ])
+
+            result_df.write_database(
+                table_name="bronze.hw5",
+                connection=DB_URL,
+                if_table_exists="append"
+            )
+        else:
+            log.warning("No new entries detected, exiting process")
+        
+        log.info("Process completed.")
+
+    # if any exceptions occured send error to logs
+    except Exception as e:
+        log.error(f"Pipeline failed: {e}", exc_info=True)
+        raise
+
 # step down here to add metadata
 # add ingested_at, updated_at, source, adjustment
 

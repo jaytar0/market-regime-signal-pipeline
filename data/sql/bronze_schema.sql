@@ -11,6 +11,8 @@ CREATE TABLE IF NOT EXISTS bronze.hw5 (
     volume        DOUBLE PRECISION,
     trade_count   DOUBLE PRECISION,
     vwap          DOUBLE PRECISION,
+    ingested_at   TIMESTAMPTZ NOT NULL DEFAULT now(),
+    source        TEXT,
     PRIMARY KEY (symbol, timestamp)
 );
 

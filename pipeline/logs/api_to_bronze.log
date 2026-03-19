@@ -1,0 +1,36 @@
+2026-03-18 20:00:42,966 INFO Starting Alpaca API -> Bronze pipeline
+2026-03-18 20:00:42,966 INFO Tickers Pulled: ['AMZN', 'XLK']
+2026-03-18 20:00:43,005 WARNING No new data is available.
+2026-03-18 20:00:43,005 WARNING No new entries detected, exiting process
+2026-03-18 20:00:43,005 INFO Process completed.
+2026-03-18 20:01:29,571 INFO Starting Alpaca API -> Bronze pipeline
+2026-03-18 20:01:29,571 INFO Tickers Pulled: ['AMZN', 'XLK']
+2026-03-18 20:01:29,608 WARNING No new data is available.
+2026-03-18 20:01:29,609 WARNING No new entries detected, exiting process
+2026-03-18 20:01:29,609 INFO Process completed.
+2026-03-18 20:06:24,843 INFO Starting Alpaca API -> Bronze pipeline
+2026-03-18 20:06:24,843 INFO Tickers Pulled: ['AMZN', 'XLK']
+2026-03-18 20:06:24,899 INFO Historical data not detected, creating bronze schema and performing initial pull.
+2026-03-18 20:06:24,899 INFO Bulk Time Range: 2019-01-01 00:00:00 - 2026-01-01 00:00:00
+2026-03-18 20:07:59,507 INFO Starting Alpaca API -> Bronze pipeline
+2026-03-18 20:07:59,507 INFO Tickers Pulled: ['AMZN', 'XLK']
+2026-03-18 20:07:59,521 INFO Historical data not detected, creating bronze schema and performing initial pull.
+2026-03-18 20:07:59,521 INFO Bulk Time Range: 2019-01-01 00:00:00 - 2026-01-01 00:00:00
+2026-03-18 20:08:00,066 INFO New entries detected 3520, appending to database.
+2026-03-18 20:08:00,663 INFO Process completed.
+2026-03-18 20:08:07,066 INFO Starting Alpaca API -> Bronze pipeline
+2026-03-18 20:08:07,066 INFO Tickers Pulled: ['AMZN', 'XLK']
+2026-03-18 20:08:07,079 INFO Historical data detected, looking for new data.
+2026-03-18 20:08:07,104 INFO Pulling data in range of 2026-01-01 05:00:00+00:00 - 2026-03-19 03:08:07.104938+00:00.
+2026-03-18 20:09:10,281 INFO Starting Alpaca API -> Bronze pipeline
+2026-03-18 20:09:10,281 INFO Tickers Pulled: ['AMZN', 'XLK']
+2026-03-18 20:09:10,294 INFO Historical data detected, looking for new data.
+2026-03-18 20:09:10,319 INFO Pulling data in range of 2026-01-01 05:00:00+00:00 - 2026-03-19 02:54:10.319423+00:00.
+2026-03-18 20:09:10,602 INFO New entries detected 104, appending to database.
+2026-03-18 20:09:10,842 INFO Process completed.
+2026-03-18 20:11:10,121 INFO Starting Alpaca API -> Bronze pipeline
+2026-03-18 20:11:10,121 INFO Tickers Pulled: ['AMZN', 'XLK']
+2026-03-18 20:11:10,135 INFO Historical data detected, looking for new data.
+2026-03-18 20:11:10,160 WARNING No new data is available.
+2026-03-18 20:11:10,160 WARNING No new entries detected, exiting process
+2026-03-18 20:11:10,161 INFO Process completed.
