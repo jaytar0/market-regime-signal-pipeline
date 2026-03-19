@@ -17,4 +17,6 @@ select
 -- DROP SCHEMA bronze CASCADE;
 -- DROP SCHEMA silver CASCADE;
 
-select * from silver.quarantine
+select * from silver.hw5
+
+select * from gold.hw5
