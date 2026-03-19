@@ -1,5 +1,20 @@
 CREATE SCHEMA IF NOT EXISTS bronze;
 
+-- HW5 ussage
+CREATE TABLE IF NOT EXISTS bronze.hw5 (
+    symbol        TEXT        NOT NULL,
+    timestamp     TIMESTAMPTZ NOT NULL,
+    open          DOUBLE PRECISION,
+    high          DOUBLE PRECISION,
+    low           DOUBLE PRECISION,
+    close         DOUBLE PRECISION,
+    volume        DOUBLE PRECISION,
+    trade_count   DOUBLE PRECISION,
+    vwap          DOUBLE PRECISION,
+    PRIMARY KEY (symbol, timestamp)
+);
+
+
 -- Daily bars
 CREATE TABLE IF NOT EXISTS bronze.daily_bars (
     id          SERIAL PRIMARY KEY,
