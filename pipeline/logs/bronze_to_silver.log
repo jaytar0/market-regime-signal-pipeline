@@ -1,0 +1,34 @@
+2026-03-18 21:29:29,002 INFO Starting bronze to silver pipeline.
+2026-03-18 21:29:29,064 INFO Bronze entries detected: 3624
+2026-03-18 21:29:29,064 INFO Starting validation and data quality checks.
+2026-03-18 21:29:29,067 INFO OHLC logic validations
+2026-03-18 21:29:29,067 INFO Valid entries found: 3624
+2026-03-18 21:29:29,067 INFO Invalid entries found: 0
+2026-03-18 21:29:29,070 WARNING Duplicates: 0
+2026-03-18 21:29:29,070 WARNING Null symbols: col("symbol").is_null().sum()
+2026-03-18 21:29:29,072 WARNING Null timestamps: 0
+2026-03-18 21:29:29,072 WARNING Null open: 0
+2026-03-18 21:29:29,073 WARNING Null high: 0
+2026-03-18 21:29:29,073 WARNING Null low: 0
+2026-03-18 21:29:29,073 WARNING Null close: 0
+2026-03-18 21:29:29,073 WARNING Null volume: 0
+2026-03-18 21:29:29,081 WARNING Zero prices: 0
+2026-03-18 21:29:29,082 INFO Data Cleaning validations
+2026-03-18 21:29:29,082 INFO Valid entries found: 2896
+2026-03-18 21:29:29,083 INFO Invalid entries found: 728
+2026-03-18 21:29:29,083 WARNING Inserting invalid entries into silver.quarantine
+2026-03-18 21:29:29,334 INFO Records remaining after OHLC + Null Validations: 2896
+2026-03-18 21:29:29,336 INFO Writing records to silver.
+2026-03-18 21:29:29,577 INFO Silver Process Finished.
+2026-03-18 21:31:05,439 INFO Starting bronze to silver pipeline.
+2026-03-18 21:31:05,499 INFO Bronze entries detected: 3624
+2026-03-18 21:31:05,499 INFO Starting validation and data quality checks.
+2026-03-18 21:31:05,502 INFO OHLC logic validations
+2026-03-18 21:31:05,502 INFO Valid entries found: 3624
+2026-03-18 21:31:05,502 INFO Invalid entries found: 0
+2026-03-18 21:31:05,506 INFO Data Cleaning validations
+2026-03-18 21:31:05,506 INFO Valid entries found: 3624
+2026-03-18 21:31:05,507 INFO Invalid entries found: 0
+2026-03-18 21:31:05,507 INFO Records remaining after OHLC + Null Validations: 3624
+2026-03-18 21:31:05,508 INFO Writing records to silver.
+2026-03-18 21:31:06,021 INFO Silver Process Finished.

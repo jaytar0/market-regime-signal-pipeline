@@ -1,4 +1,4 @@
-SELECT symbol, "timestamp", "open", high, low, "close", volume, trade_count, vwap
+SELECT *
 FROM bronze.hw5;
 
 select
@@ -15,3 +15,6 @@ select
  
  
 -- DROP SCHEMA bronze CASCADE;
+-- DROP SCHEMA silver CASCADE;
+
+select * from silver.quarantine

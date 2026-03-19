@@ -134,5 +134,5 @@ if __name__ == "__main__":
 
     # if any exceptions occured send error to logs
     except Exception as e:
-        log.error(f"Pipeline failed: {e}", exc_info=True)
+        log.error(f"Bronze pipeline failed: {e}", exc_info=True)
         raise
