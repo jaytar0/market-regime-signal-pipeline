@@ -1,0 +1,6 @@
+2026-03-18 21:56:22,491 INFO Starting silver to gold pipeline.
+2026-03-18 21:56:22,577 INFO Silver entries detected: 3624
+2026-03-18 21:56:22,577 INFO Starting feature engineering.
+2026-03-18 21:56:22,596 INFO Finished writing new features, sending records to gold: 3624
+2026-03-18 21:56:22,597 INFO Writing records to gold.
+2026-03-18 21:56:23,202 INFO Gold Process Finished.
