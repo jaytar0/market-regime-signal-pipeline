@@ -13,7 +13,7 @@ import logging
 load_dotenv()
 DB_URL =  f"postgresql://{os.getenv('POSTGRES_USER')}:{os.getenv('POSTGRES_PASSWORD')}@localhost:5432/{os.getenv('POSTGRES_DB')}"
 TICKERS = os.getenv("STOCK_LIST").split(",")
-TARGET_TABLE=os.getenv("TARGET_TABLE")
+TARGET_TABLE=os.getenv("BRONZE_TABLE")
 
 # Load Logger
 os.makedirs("./pipeline/logs", exist_ok=True)
