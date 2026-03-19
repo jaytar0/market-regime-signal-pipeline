@@ -136,14 +136,3 @@ if __name__ == "__main__":
     except Exception as e:
         log.error(f"Pipeline failed: {e}", exc_info=True)
         raise
-
-# step down here to add metadata
-# add ingested_at, updated_at, source, adjustment
-
-# make sure all data is in thereOHLCV + vwap + trade_count 
-
-
-# execute query
-
-# write to table logs
-
