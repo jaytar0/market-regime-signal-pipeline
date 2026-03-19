@@ -34,3 +34,25 @@
 2026-03-18 20:11:10,160 WARNING No new data is available.
 2026-03-18 20:11:10,160 WARNING No new entries detected, exiting process
 2026-03-18 20:11:10,161 INFO Process completed.
+2026-03-18 20:16:55,844 INFO Starting Alpaca API -> Bronze pipeline
+2026-03-18 20:16:55,844 INFO Tickers Pulled: ['AMZN', 'XLK']
+2026-03-18 20:16:55,858 ERROR Pipeline failed: relation "none" does not exist
+LINE 1: SELECT COUNT(*) FROM None;
+                             ^
+Traceback (most recent call last):
+  File "C:\Users\shure\TaroBall\Gtech\ISYE-7406-OAN\Project\pipeline\pl_api_to_bronze.py", line 107, in <module>
+    if not startup():
+           ~~~~~~~^^
+  File "C:\Users\shure\TaroBall\Gtech\ISYE-7406-OAN\Project\pipeline\pl_api_to_bronze.py", line 41, in startup
+    cur.execute(f"SELECT COUNT(*) FROM {TARGET_TABLE};")
+    ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.errors.UndefinedTable: relation "none" does not exist
+LINE 1: SELECT COUNT(*) FROM None;
+                             ^
+
+2026-03-18 20:17:38,220 INFO Starting Alpaca API -> Bronze pipeline
+2026-03-18 20:17:38,220 INFO Tickers Pulled: ['AMZN', 'XLK']
+2026-03-18 20:17:38,233 INFO Historical data detected, looking for new data.
+2026-03-18 20:17:38,258 WARNING No new data is available.
+2026-03-18 20:17:38,258 WARNING No new entries detected, exiting process
+2026-03-18 20:17:38,258 INFO Process completed.

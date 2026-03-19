@@ -13,6 +13,7 @@ import logging
 load_dotenv()
 DB_URL =  f"postgresql://{os.getenv('POSTGRES_USER')}:{os.getenv('POSTGRES_PASSWORD')}@localhost:5432/{os.getenv('POSTGRES_DB')}"
 TICKERS = os.getenv("STOCK_LIST").split(",")
+TARGET_TABLE=os.getenv("TARGET_TABLE")
 
 # Load Logger
 os.makedirs("./pipeline/logs", exist_ok=True)
@@ -37,7 +38,7 @@ def startup():
     with psycopg2.connect(DB_URL) as conn:
         with conn.cursor() as cur:
             cur.execute(sql)
-            cur.execute("SELECT COUNT(*) FROM bronze.hw5;")
+            cur.execute(f"SELECT COUNT(*) FROM {TARGET_TABLE};")
             count = cur.fetchone()[0]
         conn.commit()
 
@@ -70,7 +71,7 @@ def request_current():
     stock_list = TICKERS
     
     last_ts = pl.read_database_uri(
-        query="SELECT MAX(timestamp) FROM bronze.hw5",
+        query=f"SELECT MAX(timestamp) FROM {TARGET_TABLE}",
         uri=DB_URL
     )["max"][0]
 
@@ -122,7 +123,7 @@ if __name__ == "__main__":
             ])
 
             result_df.write_database(
-                table_name="bronze.hw5",
+                table_name=TARGET_TABLE,
                 connection=DB_URL,
                 if_table_exists="append"
             )
