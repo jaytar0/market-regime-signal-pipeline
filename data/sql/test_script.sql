@@ -18,5 +18,4 @@ select
 -- DROP SCHEMA silver CASCADE;
 
 select * from silver.hw5
-
 select * from gold.hw5

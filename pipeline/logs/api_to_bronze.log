@@ -56,3 +56,9 @@ LINE 1: SELECT COUNT(*) FROM None;
 2026-03-18 20:17:38,258 WARNING No new data is available.
 2026-03-18 20:17:38,258 WARNING No new entries detected, exiting process
 2026-03-18 20:17:38,258 INFO Process completed.
+2026-03-19 19:19:21,764 INFO Starting Alpaca API -> Bronze pipeline
+2026-03-19 19:19:21,765 INFO Tickers Pulled: ['AMZN', 'XLK']
+2026-03-19 19:19:21,811 INFO Historical data detected, looking for new data.
+2026-03-19 19:19:22,156 INFO Pulling data in range of 2026-03-19 04:00:00+00:00 - 2026-03-20 02:04:22.156158+00:00.
+2026-03-19 19:19:22,488 INFO New entries detected 2, appending to database.
+2026-03-19 19:19:23,530 INFO Process completed.

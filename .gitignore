@@ -1,5 +1,6 @@
 .env
 .venv/
+pipeline/logs
 data/mlflow/mlflow.log
 *.db
 
