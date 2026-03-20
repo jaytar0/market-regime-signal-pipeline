@@ -1,7 +1,9 @@
 .env
 .venv/
 pipeline/logs
-data/mlflow/mlflow.log
+data/mlflow
+eda/mlruns
+
 *.db
 
 __pycache__/
