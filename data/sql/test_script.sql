@@ -1,21 +1,9 @@
-SELECT *
-FROM bronze.hw5;
-
-select
-	symbol,
-	count(*)
-from
-bronze.hw5
-group by symbol
-
-select
- max(timestamp)
- from
- bronze.hw5
- 
- 
 -- DROP SCHEMA bronze CASCADE;
 -- DROP SCHEMA silver CASCADE;
 
-select * from silver.hw5
-select * from gold.hw5
+SELECT 
+	symbol, "timestamp", "open", high, low, "close", 
+	volume, trade_count, vwap, log_return, hl_range,
+	volume_ratio, rolling_vol, rolling_sharpe, featured_at
+FROM 
+	gold.hw5;
