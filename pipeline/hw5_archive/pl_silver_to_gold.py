@@ -52,9 +52,9 @@ def get_silver_entries():
             SELECT 
                 s.* 
             FROM 
-                silver.regime s
+                silver.hw5 s
             LEFT JOIN 
-                gold.regime g
+                gold.hw5 g
             ON s.symbol = g.symbol AND s.timestamp = g.timestamp
             WHERE 
                 g.timestamp IS NULL

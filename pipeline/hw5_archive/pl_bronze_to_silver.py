@@ -14,7 +14,7 @@ load_dotenv()
 DB_URL =  f"postgresql://{os.getenv('POSTGRES_USER')}:{os.getenv('POSTGRES_PASSWORD')}@localhost:5432/{os.getenv('POSTGRES_DB')}"
 SILVER_TABLE=os.getenv("SILVER_TABLE")
 BRONZE_TABLE=os.getenv("BRONZE_TABLE")
-Q_TABLE = "silver.regime_quarantine"
+Q_TABLE = "silver.hw5"
 
 # Load Logger
 os.makedirs("./pipeline/logs", exist_ok=True)
@@ -53,9 +53,9 @@ def get_bronze_entries():
             SELECT 
                 b.* 
             FROM 
-                bronze.regime b
+                bronze.hw5 b
             LEFT JOIN 
-                silver.regime s
+                silver.hw5 s
             ON b.symbol = s.symbol AND b.timestamp = s.timestamp
             WHERE 
                 s.timestamp IS NULL
