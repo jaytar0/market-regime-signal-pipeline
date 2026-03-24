@@ -88,3 +88,9 @@ connection to server at "localhost" (127.0.0.1), port 5432 failed: Connection re
 2026-03-23 12:28:46,541 INFO Bulk Time Range: 2019-01-01 00:00:00 - 2026-01-01 00:00:00
 2026-03-23 12:28:47,257 INFO New entries detected 3520, appending to database.
 2026-03-23 12:28:48,591 INFO Process completed.
+2026-03-24 07:37:28,501 INFO Starting Alpaca API -> Bronze pipeline
+2026-03-24 07:37:28,502 INFO Tickers Pulled: ['SPY', 'QQQ']
+2026-03-24 07:37:28,524 INFO Historical data detected, looking for new data.
+2026-03-24 07:37:28,569 INFO Pulling data in range of 2026-01-01 05:00:00+00:00 - 2026-03-24 14:22:28.569316+00:00.
+2026-03-24 07:37:28,900 INFO New entries detected 112, appending to database.
+2026-03-24 07:37:30,659 INFO Process completed.

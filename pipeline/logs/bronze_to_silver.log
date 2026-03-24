@@ -56,3 +56,15 @@
 2026-03-23 12:29:02,590 INFO Records remaining after OHLC + Null Validations: 3520
 2026-03-23 12:29:02,593 INFO Writing records to silver.
 2026-03-23 12:29:03,075 INFO Silver Process Finished.
+2026-03-24 07:37:56,622 INFO Starting bronze to silver pipeline.
+2026-03-24 07:37:56,667 INFO Bronze entries detected: 112
+2026-03-24 07:37:56,667 INFO Starting validation and data quality checks.
+2026-03-24 07:37:56,672 INFO OHLC logic validations
+2026-03-24 07:37:56,672 INFO Valid entries found: 112
+2026-03-24 07:37:56,673 INFO Invalid entries found: 0
+2026-03-24 07:37:56,682 INFO Data Cleaning validations
+2026-03-24 07:37:56,682 INFO Valid entries found: 112
+2026-03-24 07:37:56,682 INFO Invalid entries found: 0
+2026-03-24 07:37:56,682 INFO Records remaining after OHLC + Null Validations: 112
+2026-03-24 07:37:56,683 INFO Writing records to silver.
+2026-03-24 07:37:56,954 INFO Silver Process Finished.

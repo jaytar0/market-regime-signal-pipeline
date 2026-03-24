@@ -7,3 +7,10 @@ SELECT
 	volume_ratio, rolling_vol, rolling_sharpe, featured_at
 FROM 
 	gold.hw5;
+
+
+
+select * from silver.regime
+
+
+select * from gold.regime
