@@ -62,3 +62,29 @@ LINE 1: SELECT COUNT(*) FROM None;
 2026-03-19 19:19:22,156 INFO Pulling data in range of 2026-03-19 04:00:00+00:00 - 2026-03-20 02:04:22.156158+00:00.
 2026-03-19 19:19:22,488 INFO New entries detected 2, appending to database.
 2026-03-19 19:19:23,530 INFO Process completed.
+2026-03-23 12:28:02,420 INFO Starting Alpaca API -> Bronze pipeline
+2026-03-23 12:28:02,421 INFO Tickers Pulled: ['SPY', 'QQQ']
+2026-03-23 12:28:06,568 ERROR Bronze pipeline failed: connection to server at "localhost" (::1), port 5432 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+connection to server at "localhost" (127.0.0.1), port 5432 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+Traceback (most recent call last):
+  File "C:\Users\shure\TaroBall\Gtech\ISYE-7406-OAN\Project\pipeline\pl_api_to_bronze.py", line 107, in <module>
+    if not startup():
+           ~~~~~~~^^
+  File "C:\Users\shure\TaroBall\Gtech\ISYE-7406-OAN\Project\pipeline\pl_api_to_bronze.py", line 38, in startup
+    with psycopg2.connect(DB_URL) as conn:
+         ~~~~~~~~~~~~~~~~^^^^^^^^
+  File "C:\Users\shure\TaroBall\Gtech\ISYE-7406-OAN\Project\.venv\Lib\site-packages\psycopg2\__init__.py", line 135, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+psycopg2.OperationalError: connection to server at "localhost" (::1), port 5432 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+connection to server at "localhost" (127.0.0.1), port 5432 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+
+2026-03-23 12:28:46,475 INFO Starting Alpaca API -> Bronze pipeline
+2026-03-23 12:28:46,476 INFO Tickers Pulled: ['SPY', 'QQQ']
+2026-03-23 12:28:46,540 INFO Historical data not detected, creating bronze schema and performing initial pull.
+2026-03-23 12:28:46,541 INFO Bulk Time Range: 2019-01-01 00:00:00 - 2026-01-01 00:00:00
+2026-03-23 12:28:47,257 INFO New entries detected 3520, appending to database.
+2026-03-23 12:28:48,591 INFO Process completed.
