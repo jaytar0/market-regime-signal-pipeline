@@ -88,9 +88,16 @@ def request_current():
     if start >= end:
         log.warning("No new data is available.")
         return None
-    
+
     log.info(f"Pulling data in range of {start} - {end}.")
-    return request_stocks(start, end, stock_list)
+
+    temp_store = request_stocks(start, end, stock_list)
+    
+    if len(temp_store) == 0:
+        log.info(f"No records were retrieved")
+        return None
+    else:
+        return temp_store
 
 
 # main process
