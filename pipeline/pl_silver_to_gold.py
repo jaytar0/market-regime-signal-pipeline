@@ -50,11 +50,11 @@ def startup():
 def get_silver_entries():
 
     res = pl.read_database_uri(
-        query="""
+        query=f"""
         SELECT * 
         FROM silver.regime 
         WHERE timestamp >= (
-            SELECT COALESCE(MAX(timestamp), '1900-01-01'::timestamp) - INTERVAL '20 days' 
+            SELECT COALESCE(MAX(timestamp), '1900-01-01'::timestamp) - INTERVAL '{ROLLING_WINDOW} days' 
             FROM gold.regime
         )
         """,
