@@ -44,15 +44,19 @@ def startup():
 
     return count > 0
 
+
+
 # get new silver entries that are not in gold
 def get_silver_entries():
 
     res = pl.read_database_uri(
         query="""
-            SELECT 
-                s.* 
-            FROM 
-                silver.regime s
+        SELECT * 
+        FROM silver.regime 
+        WHERE timestamp >= (
+            SELECT COALESCE(MAX(timestamp), '1900-01-01'::timestamp) - INTERVAL '20 days' 
+            FROM gold.regime
+        )
         """,
         uri=DB_URL
     )
@@ -203,10 +207,27 @@ if __name__ == "__main__":
 
         log.info(f"Writing records to gold.")
 
-        result_df.write_database(
+        existing_gold_keys = pl.read_database_uri(
+            query=f"SELECT symbol, timestamp FROM {GOLD_TABLE}",
+            uri=DB_URL
+        )
+
+        to_append = result_df.join(
+            existing_gold_keys, 
+            on=["symbol", "timestamp"], 
+            how="anti"
+        )      
+
+        if to_append.is_empty():
+            log.info("No new unique records to append. Exiting.")
+            exit()
+
+        log.info(f"Appending {len(to_append)} new unique records to gold.")
+
+        to_append.write_database(
             table_name=GOLD_TABLE,
             connection=DB_URL,
-            if_table_exists="replace" 
+            if_table_exists="append" 
         )
 
         log.info(f"Gold Process Finished.")
