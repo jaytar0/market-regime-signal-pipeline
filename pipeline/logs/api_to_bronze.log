@@ -583,3 +583,9 @@ DETAIL:  Key (symbol, "timestamp")=(QQQ, 2026-03-23 04:00:00+00) already exists.
 2026-03-24 20:20:07,336 INFO Pulling data in range of 2026-03-24 04:00:00+00:00 - 2026-03-25 03:05:07.336419+00:00.
 2026-03-24 20:20:07,610 INFO New entries detected 2, appending to database.
 2026-03-24 20:20:07,788 INFO Process completed.
+2026-03-25 19:50:30,156 INFO Starting Alpaca API -> Bronze pipeline
+2026-03-25 19:50:30,156 INFO Tickers Pulled: ['SPY', 'QQQ']
+2026-03-25 19:50:30,197 INFO Historical data detected, looking for new data.
+2026-03-25 19:50:30,517 INFO Pulling data in range of 2026-03-25 04:00:00+00:00 - 2026-03-26 02:35:30.517508+00:00.
+2026-03-25 19:50:30,847 INFO New entries detected 2, appending to database.
+2026-03-25 19:50:31,925 INFO Process completed.

@@ -71,3 +71,15 @@
 2026-03-24 20:21:25,833 INFO Starting bronze to silver pipeline.
 2026-03-24 20:21:25,882 INFO Bronze entries detected: 0
 2026-03-24 20:21:25,883 INFO No new bronze entries for processing. Exiting process.
+2026-03-25 19:50:44,834 INFO Starting bronze to silver pipeline.
+2026-03-25 19:50:44,880 INFO Bronze entries detected: 2
+2026-03-25 19:50:44,880 INFO Starting validation and data quality checks.
+2026-03-25 19:50:44,890 INFO OHLC logic validations
+2026-03-25 19:50:44,891 INFO Valid entries found: 2
+2026-03-25 19:50:44,891 INFO Invalid entries found: 0
+2026-03-25 19:50:44,900 INFO Data Cleaning validations
+2026-03-25 19:50:44,900 INFO Valid entries found: 2
+2026-03-25 19:50:44,900 INFO Invalid entries found: 0
+2026-03-25 19:50:44,900 INFO Records remaining after OHLC + Null Validations: 2
+2026-03-25 19:50:44,902 INFO Writing records to silver.
+2026-03-25 19:50:45,096 INFO Silver Process Finished.

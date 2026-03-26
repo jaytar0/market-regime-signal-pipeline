@@ -53,11 +53,6 @@ def get_silver_entries():
                 s.* 
             FROM 
                 silver.regime s
-            LEFT JOIN 
-                gold.regime g
-            ON s.symbol = g.symbol AND s.timestamp = g.timestamp
-            WHERE 
-                g.timestamp IS NULL
         """,
         uri=DB_URL
     )
@@ -211,7 +206,7 @@ if __name__ == "__main__":
         result_df.write_database(
             table_name=GOLD_TABLE,
             connection=DB_URL,
-            if_table_exists="append"
+            if_table_exists="replace" 
         )
 
         log.info(f"Gold Process Finished.")
