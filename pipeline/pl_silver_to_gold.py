@@ -199,13 +199,13 @@ if __name__ == "__main__":
         
         result_df = feature_engineering(new_df)
 
-        log.info(f"Finished writing new features, sending records to gold: {len(result_df)}")
+        log.info(f"Finished writing new features.")
 
         result_df = result_df.drop(["processed_at"]).with_columns([
             pl.lit(datetime.now(timezone.utc)).alias("featured_at")
         ])
 
-        log.info(f"Writing records to gold.")
+        log.info(f"Try writing records to gold.")
 
         existing_gold_keys = pl.read_database_uri(
             query=f"SELECT symbol, timestamp FROM {GOLD_TABLE}",
