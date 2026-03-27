@@ -1,14 +1,18 @@
+# get rid of environment variables and virtual env
 .env
 .venv/
+
+# get rid of logs
 pipeline/logs
+
+# get rid of ml flow storage or db related
 data/mlflow
 eda/mlruns
-
 *.db
 
+# get rid of pyache etc.
 __pycache__/
 *.pyc
 *.pyo
-
 .DS_Store
 Thumbs.db
