@@ -13,4 +13,9 @@ FROM
 select * from silver.regime
 
 
-select * from gold.regime
+select timestamp from gold.regime
+select max(timestamp) from gold.regime
+
+DELETE FROM bronze.regime 
+WHERE timestamp = '2026-03-24 04:00:00+00' 
+AND symbol IN ('QQQ', 'SPY');
