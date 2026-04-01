@@ -9,7 +9,7 @@ FROM
 	gold.hw5;
 
 
-
+select * from bronze.regime
 select * from silver.regime
 
 
