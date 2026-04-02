@@ -1,0 +1,23 @@
+artifact_path: file:C:/Users/shure/TaroBall/Gtech/ISYE-7406-OAN/Project/mlruns/3/models/m-fedcc65c2b184b1e86ff926fe74427a8/artifacts
+flavors:
+  python_function:
+    env:
+      conda: conda.yaml
+      virtualenv: python_env.yaml
+    loader_module: mlflow.sklearn
+    model_path: model.pkl
+    predict_fn: predict
+    python_version: 3.13.0
+  sklearn:
+    code: null
+    pickled_model: model.pkl
+    serialization_format: cloudpickle
+    sklearn_version: 1.8.0
+    skops_trusted_types: null
+mlflow_version: 3.10.1
+model_id: m-fedcc65c2b184b1e86ff926fe74427a8
+model_size_bytes: 3214
+model_uuid: m-fedcc65c2b184b1e86ff926fe74427a8
+prompts: null
+run_id: 1cc825b18bd04d9bb6548e77fc29b6cc
+utc_time_created: '2026-04-02 03:48:33.100939'
