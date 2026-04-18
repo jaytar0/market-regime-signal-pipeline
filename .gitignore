@@ -23,8 +23,6 @@ project_assets/midterm
 project_assets/project_specs
 project_assets/proposal
 
-
-
 # get rid of pyache etc.
 __pycache__/
 *.pyc
