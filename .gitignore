@@ -2,13 +2,28 @@
 .env
 .venv/
 
-# get rid of logs
-pipeline/logs
-
 # get rid of ml flow storage or db related
 data/mlflow
+
+# get rid of mlruns
 eda/mlruns
-*.db
+mlruns/
+
+# get rid of unecessary eda
+eda/hw5_eda.ipynb
+
+# get rid of logs
+pipeline/logs
+pipeline/hw5_archive
+
+
+# tget rid of project_assets
+project_assets/hw5
+project_assets/midterm
+project_assets/project_specs
+project_assets/proposal
+
+
 
 # get rid of pyache etc.
 __pycache__/

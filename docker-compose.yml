@@ -15,17 +15,35 @@ services:
       timeout: 5s
       retries: 5
 
-  # pgadmin:
-  #   image: dpage/pgadmin4
-  #   container_name: pgadmin
-  #   environment:
-  #     PGADMIN_DEFAULT_EMAIL: ${PGADMIN_EMAIL}
-  #     PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_PASSWORD}
-  #   ports:
-  #     - "8080:80"
-  #   depends_on:
-  #     - postgres
+  mlflow:
+    image: ghcr.io/mlflow/mlflow:v3.11.1
+    container_name: mlflow_server
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./data/mlflow:/mlflow/db
+      - ./mlruns:/mlflow/mlruns
+    command: >
+      mlflow server
+      --backend-store-uri sqlite:///mlflow/db/mlflow.db
+      --default-artifact-root /mlflow/mlruns
+      --host 0.0.0.0
+      --port 5000
+      --allowed-hosts "*"
+      --serve-artifacts
+
+  api:
+    build: ./api
+    container_name: regime_api
+    ports:
+      - "8000:8000"
+    environment:
+      - MLFLOW_TRACKING_URI=http://mlflow:5000
+    depends_on:
+      - mlflow
+    volumes:
+      - ./mlruns:/mlflow/mlruns
+    restart: on-failure
 
 volumes:
   pgdata:
-
