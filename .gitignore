@@ -3,7 +3,9 @@
 .venv/
 
 # get rid of ml flow storage or db related
-data/
+data/*
+!data/sql/
+!data/sql/*
 
 # get rid of mlruns
 mlruns/
