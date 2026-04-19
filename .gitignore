@@ -24,9 +24,9 @@ pipeline/*
 
 # tget rid of project_assets
 assets/*
-# keep specific files
+!assets/research_paper/
 !assets/research_paper/*
-!assets/research_paper/final_paper.pdf
+!assets/images/
 !assets/images/*
 
 # get rid of pyache etc.
