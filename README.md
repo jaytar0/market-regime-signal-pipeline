@@ -77,4 +77,5 @@ POST /regime accepts scaled feature vector, and returns the regime label. The fo
 - Main functionalities (done)
 - FastAPI /regime endpoint (done)
 - Grafana monitoring dashboard
+- Trading bot and automated retraining pipeline triggered by threshold monitoring to account for drift
 - XGBoost supervised layer using HMM regime labels
