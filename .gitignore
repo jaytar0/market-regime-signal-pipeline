@@ -7,7 +7,8 @@ data/mlflow
 
 # get rid of mlruns
 eda/mlruns
-mlruns/
+mlruns/3
+mlruns/4
 
 # get rid of unecessary eda
 eda/hw5_eda.ipynb
