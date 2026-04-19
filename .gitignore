@@ -3,26 +3,28 @@
 .venv/
 
 # get rid of ml flow storage or db related
-data/mlflow
+data/
 
 # get rid of mlruns
-eda/mlruns
-mlruns/3
-mlruns/4
+mlruns/
+
 
 # get rid of unecessary eda
-eda/hw5_eda.ipynb
+eda/*
+!eda/regime_model_eda.ipynb
 
-# get rid of logs
-pipeline/logs
-pipeline/hw5_archive
-
+# ignore everything in pipeline except the py files
+pipeline/*
+!pipeline/pl_api_to_bronze.py
+!pipeline/pl_bronze_to_silver.py
+!pipeline/pl_silver_to_gold.py
+!pipeline/run_pipeline.ps1
 
 # tget rid of project_assets
-project_assets/hw5
-project_assets/midterm
-project_assets/project_specs
-project_assets/proposal
+assets/*
+# keep specific files
+!assets/final_paper.pdf
+!assets/images
 
 # get rid of pyache etc.
 __pycache__/
