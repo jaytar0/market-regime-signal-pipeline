@@ -97,6 +97,22 @@ The pipeline has been migrated to a production cloud architecture on GCP.
 | API Serving | Cloud Run Service |
 | Container Registry | Artifact Registry |
 
+<p align="center">
+  <img src="assets/images/cloud_runner.png" width="800"/>
+</p>
+
+<p align="center">
+  <img src="assets/images/cloud_scheduler.png" width="800"/>
+</p>
+
+<p align="center">
+  <img src="assets/images/big_query.png" width="800"/>
+</p>
+
+<p align="center">
+  <img src="assets/images/gcs.png" width="800"/>
+</p>
+
 ### Roadmap
 
 - Main functionalities (done)
