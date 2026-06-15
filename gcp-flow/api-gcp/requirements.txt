@@ -1,0 +1,7 @@
+fastapi
+uvicorn
+google-cloud-storage
+hmmlearn
+scikit-learn
+numpy
+python-dotenv
