@@ -37,3 +37,4 @@ __pycache__/
 Thumbs.db
 
 env.yaml
+artifacts/

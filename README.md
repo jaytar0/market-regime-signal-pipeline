@@ -10,11 +10,18 @@ I built a full medallion architecture pipeline that utilizes Alpaca API to query
 
 Research was done before-hand and determined that 3-state HMM with full covariance won, with a BIC ~29,936. This means that distinct bull, crisis, and transitional regimes with meaningfully different Sharpe ratios and draw down profiles were identified.
 
+The pipeline is fully deployed on GCP. Daily ingestion and feature engineering runs as a scheduled Cloud Run Job writing to BigQuery, model artifacts are stored in GCS, and the regime signal is served via an authenticated FastAPI endpoint on Cloud Run.
+
 ### Architecture Diagram
 
 <p align="center">
   <img src="assets/images/pipeline.png" width="800"/>
 </p>
+
+<p align="center">
+  <img src="assets/images/gcp_pipeline_architecture_v2.png" width="800"/>
+</p>
+
 
 ### HMM Results
 
@@ -71,11 +78,32 @@ POST /regime accepts scaled feature vector, and returns the regime label. The fo
 | Modeling | hmmlearn, scikit-learn, MLflow |
 | API | FastAPI, Uvicorn |
 | Visualization | Plotly |
+| Cloud | GCP (BigQuery, Cloud Run, Cloud Scheduler, GCS) |
+
+### GCP Cloud Deployment
+The pipeline has been migrated to a production cloud architecture on GCP.
+
+**Pipeline:** Bronze → Silver → Gold scripts run as a Cloud Run Job, triggered daily at 4:30pm ET via Cloud Scheduler. Market data flows from Alpaca API through BigQuery medallion tables.
+
+**Model:** HMM trained on Gold layer features, artifacts (model.pkl, scaler.pkl, feature_cols.json) stored in GCS.
+
+**API:** FastAPI deployed on Cloud Run, loads model from GCS on startup and serves live regime predictions.
+
+| Component | GCP Service |
+|-----------|-------------|
+| Data Warehouse | BigQuery |
+| Pipeline Execution | Cloud Run Jobs |
+| Scheduling | Cloud Scheduler |
+| Model Storage | Cloud Storage (GCS) |
+| API Serving | Cloud Run Service |
+| Container Registry | Artifact Registry |
 
 ### Roadmap
 
 - Main functionalities (done)
 - FastAPI /regime endpoint (done)
+- GCP cloud deployment (done)
+- Trading bot integration with Alpaca paper trading (in progress)
 - Grafana monitoring dashboard
 - Trading bot and automated retraining pipeline triggered by threshold monitoring to account for drift
 - XGBoost supervised layer using HMM regime labels
