@@ -19,9 +19,8 @@ The pipeline is fully deployed on GCP. Daily ingestion and feature engineering r
 </p>
 
 <p align="center">
-  <img src="assets/images/gcp_pipeline_architecture_v2.png" width="800"/>
+  <img src="assets/images/gcp_pipeline_architecture_v3.png" width="800"/>
 </p>
-
 
 ### HMM Results
 
